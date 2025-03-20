@@ -23,4 +23,4 @@ Criar este site foi uma experiência incrível, na qual pude testar novas funcio
 
 Agradeço imensamente ao [flashpoint.org](https://flashpoint.org/) e ao [archive.org](https://archive.org/) por disponibilizarem arquivos `.swf`. Agradeço também ao criador do blog de Minecraft pela inspiração e, principalmente, aos criadores dos jogos e sites de jogos Flash que marcaram a minha infância.
 
-### Clique [aqui](https://fabin0casa.github.io/Repositorio-Flash/index.html) para acessar o site com o GitHub Pages
+### Clique [aqui](https://fabi0casa.github.io/Repositorio-Flash/index.html) para acessar o site com o GitHub Pages
