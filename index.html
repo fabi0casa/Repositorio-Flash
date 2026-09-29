@@ -1,9 +1,9 @@
 <html><head>
-		<link rel="icon" href="images/flash.png">
-		<link rel="stylesheet" href="style.css">
+		<link rel="icon" href="media/images/flash.png">
+		<link rel="stylesheet" href="css/style.css">
 		<title>Repositório Flash</title>
-		<script src="script.js" defer></script>
-		<script src="header.js" defer></script>
+		<script src="js/script.js" defer></script>
+		<script src="js/header.js" defer></script>
 	</head>
 	<body>
 		<div id="header"></div>
@@ -29,7 +29,7 @@
 		</div>
 
 		<script type="module">
-			import items from './data.js';
+			import items from './js/data.js';
 	
 			const container = document.getElementById('forms-container');
 	
@@ -57,7 +57,7 @@
 	
 					// Cria a imagem
 					const img = document.createElement('img');
-					img.src = `thumbs/${item}.jpeg`;
+					img.src = `media/thumbs/flash/${item}.jpeg`;
 					img.width = 150;
 					img.height = 150;
 					button.appendChild(img);

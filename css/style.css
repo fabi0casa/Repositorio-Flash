@@ -1,7 +1,7 @@
 body.dark {
 	
   font-family: Minecraft, Cambria, sans-serif;
-  background-image: url("images/dirt.png");
+  background-image: url("../media/images/dirt.png");
   background-repeat: repeat;
   image-rendering: crisp-edges;
   background-color: rgba(0, 0, 0, .2);
@@ -12,7 +12,7 @@ body.dark {
 body.light {
 	
 	font-family: Minecraft, Cambria, sans-serif;
-	background-image: url("images/dirt-light.png");
+	background-image: url("../media/images/dirt-light.png");
 	background-repeat: repeat;
 	image-rendering: crisp-edges;
 	background-color: rgba(0, 0, 0, .2);
@@ -32,7 +32,7 @@ body.light a {
 
 .headtag{
   text-shadow: 4px 4px #000000A0;
-  background-image: url("images/grass.png");
+  background-image: url("../media/images/grass.png");
   background-repeat: repeat;
   image-rendering: crisp-edges;
   
@@ -45,7 +45,7 @@ body.light a {
 
 body.light .headtag {
 	text-shadow: 4px 4px #0000004f;
-	background-image: url("images/grass-light.png");
+	background-image: url("../media/images/grass-light.png");
 	background-repeat: repeat;
 	image-rendering: crisp-edges;
 	
@@ -87,7 +87,7 @@ body.light .ret{
 }
 
 .linkbar {
-	background-image: url("images/stone.png");
+	background-image: url("../media/images/stone.png");
 	padding-left: 4px;
 	padding-right: 4px;
 	display: inline-block;
@@ -95,7 +95,7 @@ body.light .ret{
 }
 
 body.light .linkbar {
-	background-image: url("images/stone-light.png");
+	background-image: url("../media/images/stone-light.png");
 	padding-left: 4px;
 	padding-right: 4px;
 	display: inline-block;
@@ -120,7 +120,7 @@ body.light .linkbar {
 	text-transform: uppercase;
 	font-family: "Press Start 2P";
 	font-size: 40px;
-	background: url("images/grass.png")
+	background: url("../media/images/grass.png")
 		top;
 	-webkit-text-stroke-width: 0.25px;
 	-webkit-text-stroke-color: black;
@@ -133,7 +133,7 @@ body.light .titulo{
 	text-transform: uppercase;
 	font-family: "Press Start 2P";
 	font-size: 40px;
-	background: url("images/grass-light.png")
+	background: url("../media/images/grass-light.png")
 		top;
 	-webkit-text-stroke-width: 0.25px;
 	-webkit-text-stroke-color: black;
