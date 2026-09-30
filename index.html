@@ -33,12 +33,12 @@
 		</div>
 
 		<script type="module">
-			import items from './js/data.js';
+			import flash_games from './js/data-flash.js';
 	
 			const container = document.getElementById('forms-container');
 	
 			function createForms(items) {
-				items.forEach((item, index) => {
+				flash_games.forEach((item, index) => {
 					// Cria um wrapper para o formulário
 					const formWrapper = document.createElement('div');
 					formWrapper.className = 'form-wrapper';
@@ -84,7 +84,7 @@
 				});
 			}
 	
-			createForms(items);
+			createForms(flash_games);
 		</script>	
 
 		<div class="footer">

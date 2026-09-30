@@ -1,4 +1,4 @@
-const items = [
+const flash_games = [
     '3 Pandas',
     '3 Pandas 2',
     '3 Pandas in Brazil',
@@ -250,4 +250,4 @@ const items = [
     'Vida Natural',
 ];
 
-export default items;
+export default flash_games;
