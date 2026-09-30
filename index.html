@@ -34,57 +34,81 @@
 
 		<script type="module">
 			import flash_games from './js/data-flash.js';
+			import shockwave_games from './js/data-shockwave.js';
 	
 			const container = document.getElementById('forms-container');
 	
-			function createForms(items) {
-				flash_games.forEach((item, index) => {
-					// Cria um wrapper para o formulário
-					const formWrapper = document.createElement('div');
-					formWrapper.className = 'form-wrapper';
-	
-					// Cria o formulário
-					const form = document.createElement('form');
-					form.id = `form-${index}`; // ID único para cada formulário
-					form.addEventListener('submit', function(e) {
-						e.preventDefault(); // Evita o envio padrão do formulário
-						const input = form.querySelector('input[type="hidden"]');
-						const userInput = input.value;
-						// Redireciona para jogo.html com a variável na query string
-						window.location.href = 'jogo.html?data=' + encodeURIComponent(userInput);
-					});
-	
-					// Cria o botão
-					const button = document.createElement('button');
-					button.className = 'transparent-button';
-					button.type = 'submit'; // Define o botão como tipo submit
-	
-					// Cria a imagem
-					const img = document.createElement('img');
+			function createGameForm(item, type, index) {
+				// Cria um wrapper para o formulário
+				const formWrapper = document.createElement('div');
+				formWrapper.className = 'form-wrapper';
+
+				// Cria o formulário
+				const form = document.createElement('form');
+				form.id = `form-${type}-${index}`; // ID único para cada formulário
+				form.addEventListener('submit', function(e) {
+					e.preventDefault(); // Evita o envio padrão do formulário
+					const input = form.querySelector('input[type="hidden"]');
+					const userInput = input.value;
+					// Redireciona para jogo.html com o tipo correspondente na query string
+					window.location.href = `jogo.html?${type}=` + encodeURIComponent(userInput);
+				});
+
+				// Cria o botão
+				const button = document.createElement('button');
+				button.className = 'transparent-button';
+				button.type = 'submit'; // Define o botão como tipo submit
+
+				// Cria a imagem
+				const img = document.createElement('img');
+				if (type === 'flash') {
 					img.src = `media/thumbs/flash/${item}.jpeg`;
-					img.width = 150;
-					img.height = 150;
-					button.appendChild(img);
-	
-					// Cria o título
-					const h3 = document.createElement('h3');
-					h3.innerHTML = `<b>${item}</b>`;
-					button.appendChild(h3);
-	
-					// Cria o input escondido
-					const input = document.createElement('input');
-					input.type = 'hidden';
-					input.id = `input-${index}`; // ID único para cada input
-					input.value = item;
-					form.appendChild(input);
-	
-					form.appendChild(button);
-					formWrapper.appendChild(form);
-					container.appendChild(formWrapper);
+					img.onerror = () => {
+						if (!img.dataset.fallback) {
+							img.dataset.fallback = 'true';
+							img.src = `media/thumbs/flash/${item}.png`;
+						}
+					};
+				} else {
+					img.src = `media/thumbs/shockwave/${item}.png`;
+					img.onerror = () => {
+						if (!img.dataset.fallback) {
+							img.dataset.fallback = 'true';
+							img.src = `media/thumbs/shockwave/${item}.jpeg`;
+						}
+					};
+				}
+				img.width = 150;
+				img.height = 150;
+				button.appendChild(img);
+
+				// Cria o título
+				const h3 = document.createElement('h3');
+				h3.innerHTML = `<b>${item}</b>`;
+				button.appendChild(h3);
+
+				// Cria o input escondido
+				const input = document.createElement('input');
+				input.type = 'hidden';
+				input.id = `input-${type}-${index}`; // ID único para cada input
+				input.value = item;
+				form.appendChild(input);
+
+				form.appendChild(button);
+				formWrapper.appendChild(form);
+				container.appendChild(formWrapper);
+			}
+
+			function createForms() {
+				flash_games.forEach((item, index) => {
+					createGameForm(item, 'flash', index);
+				});
+				shockwave_games.forEach((item, index) => {
+					createGameForm(item, 'shockwave', index);
 				});
 			}
-	
-			createForms(flash_games);
+
+			createForms();
 		</script>	
 
 		<div class="footer">

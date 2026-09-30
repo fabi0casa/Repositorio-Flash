@@ -5,6 +5,7 @@
     <title>Repositório Flash</title>
     <script src="js/script.js" defer></script>
     <script src="js/header.js" defer></script>
+    <script src="js/dirplayer/dirplayer-polyfill.js"></script>
 </head>
 <body>
     <div id="header"></div>
@@ -29,29 +30,71 @@
         <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
         <script>
             function getQueryParam(param) {
-            const urlParams = new URLSearchParams(window.location.search);
-            return urlParams.get(param);
+                const urlParams = new URLSearchParams(window.location.search);
+                return urlParams.get(param);
             }
 
-            // Obtém o valor do parâmetro 'data'
-            var nome = getQueryParam('data');
+            // Obtém o valor do parâmetro 'flash', 'data' ou 'shockwave'
+            var flashGame = getQueryParam('flash') || getQueryParam('data');
+            var shockwaveGame = getQueryParam('shockwave');
+
+            if (!shockwaveGame && flashGame && flashGame.toLowerCase() === 'spongebob') {
+                shockwaveGame = 'SpongeBob Flip or Flop';
+                flashGame = null;
+            } else if (shockwaveGame && shockwaveGame.toLowerCase() === 'spongebob') {
+                shockwaveGame = 'SpongeBob Flip or Flop';
+            }
 
             function printToScreen(text) {
                 document.getElementById("output").innerText = text;
             }
 
-            printToScreen(nome);
+            if (flashGame) {
+                printToScreen(flashGame);
 
-            window.RufflePlayer = window.RufflePlayer || {};
-            window.addEventListener("load", (event) => {
-                const ruffle = window.RufflePlayer.newest();
-                const player = ruffle.createPlayer();
+                window.RufflePlayer = window.RufflePlayer || {};
+                window.addEventListener("load", (event) => {
+                    const ruffle = window.RufflePlayer.newest();
+                    const player = ruffle.createPlayer();
+                    const container = document.getElementById("container");
+                    container.appendChild(player);
+                    player.style.width = "800px";
+                    player.style.height = "600px";
+                    player.load(`media/jogos/flash/${flashGame}/${flashGame}.swf`);
+                });
+            } else if (shockwaveGame) {
+                printToScreen(shockwaveGame);
+
                 const container = document.getElementById("container");
-                container.appendChild(player);
-                player.style.width = "800px";
-                player.style.height = "600px";
-                player.load(`media/jogos/flash/${nome}/${nome}.swf`);
-            });
+                const gamePath = `media/jogos/shockwave/${shockwaveGame}/${shockwaveGame}.dcr`;
+
+                let extraParams = '';
+                let extraEmbedAttrs = '';
+
+                if (shockwaveGame === 'SpongeBob Flip or Flop') {
+                    const sw1 = `media/jogos/shockwave/${shockwaveGame}/nick_intro09.dcr`;
+                    const sw2 = `media/jogos/shockwave/${shockwaveGame}/close_nick_sb.dcr`;
+                    extraParams = `
+            <param name="sw1" value="${sw1}">
+            <param name="sw2" value="${sw2}">`;
+                    extraEmbedAttrs = ` sw1="${sw1}" sw2="${sw2}"`;
+                }
+
+                container.innerHTML = `
+        <object width="800" height="600"
+                data="${gamePath}"
+                type="application/x-director">
+            <param name="src" value="${gamePath}">${extraParams}
+            <embed src="${gamePath}"
+                   type="application/x-director"
+                   width="800"
+                   height="600"${extraEmbedAttrs}>
+            </embed>
+            <p style="color: white; padding: 20px;">
+                Se você está vendo isso, o DirPlayer não carregou o jogo.
+            </p>
+        </object>`;
+            }
         </script>
     </div>
 
