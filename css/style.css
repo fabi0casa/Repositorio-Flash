@@ -233,16 +233,19 @@ li {
   .home-download img {
 	border-radius: 0px;
 	animation: download-hover 30s linear infinite;
+	image-rendering: auto;
   }
 
   .home-download img.logo-shockwave {
 	border-radius: 0px;
 	animation: shockwave-orange 6s ease-in-out infinite alternate;
+	image-rendering: auto;
   }
 
   .home-download img.logo-pulse {
 	border-radius: 0px;
 	animation: flash-pulse 3.5s ease-in-out infinite;
+	image-rendering: auto;
   }
   
   @media (max-width: 12px) {
