@@ -284,5 +284,11 @@ body.light .transparent-button:hover {
 	margin-bottom: 16px;
 }
 
+.destroy-badge-container{
+	display: flex;
+	justify-content: flex-end;
+	margin: 15px 20px 30px 20px;
+}
+
 
   

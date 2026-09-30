@@ -7,6 +7,12 @@ function applyTheme(theme) {
     if (button) {
         button.textContent = theme === 'light' ? 'Trocar para Modo Escuro' : 'Trocar para Modo Claro';
     }
+    const badge = document.getElementById('spritefusion-badge');
+    if (badge) {
+        badge.src = theme === 'light'
+            ? 'https://destroy.spritefusion.com/badge-light.svg'
+            : 'https://destroy.spritefusion.com/badge.svg';
+    }
 }
 
 // Checar se há uma preferência de tema salva
