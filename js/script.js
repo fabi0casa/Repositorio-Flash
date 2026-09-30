@@ -10,8 +10,8 @@ function applyTheme(theme) {
     const badge = document.getElementById('spritefusion-badge');
     if (badge) {
         badge.src = theme === 'light'
-            ? 'https://destroy.spritefusion.com/badge-light.svg'
-            : 'https://destroy.spritefusion.com/badge.svg';
+            ? '../media/images/badge-light.svg'
+            : '../media/images/badge.svg';
     }
 }
 
