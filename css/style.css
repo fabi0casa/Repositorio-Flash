@@ -242,6 +242,12 @@ li {
     max-width: 200px;
 	height: 250px;
     overflow-wrap: break-word;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    overflow: hidden;
 }
 
 .transparent-button:hover {
@@ -265,11 +271,48 @@ body.light .transparent-button {
     max-width: 200px;
 	height: 250px;
     overflow-wrap: break-word;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    overflow: hidden;
 }
 
 body.light .transparent-button:hover {
     background-color: black;
     color: white;
+}
+
+.transparent-button img {
+    width: 150px;
+    height: 150px;
+    flex-shrink: 0;
+    display: block;
+    margin: 0 auto;
+}
+
+.transparent-button h3 {
+    margin: 0;
+    width: 100%;
+    height: 76px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    line-height: 1.15;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    overflow: hidden;
+}
+
+.transparent-button h3 b {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-height: 100%;
 }
 
 #forms-container {
@@ -288,6 +331,19 @@ body.light .transparent-button:hover {
 	display: flex;
 	justify-content: flex-end;
 	margin: 15px 20px 30px 20px;
+}
+
+#spritefusion-badge {
+	width: 180px;
+	height: 40px;
+}
+
+body.dark #spritefusion-badge {
+	content: url("../media/images/badge.svg");
+}
+
+body.light #spritefusion-badge {
+	content: url("../media/images/badge-light.svg");
 }
 
 
