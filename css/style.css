@@ -191,7 +191,33 @@ li {
 	to {
 	  filter: hue-rotate(0deg);
 	}
-  }
+}
+
+/*Easter egg 1: shockwave com gradiente apenas em tons de laranja*/
+@keyframes shockwave-orange {
+	0% {
+	  filter: hue-rotate(-20deg);
+	}
+	50% {
+	  filter: hue-rotate(5deg);
+	}
+	100% {
+	  filter: hue-rotate(25deg);
+	}
+}
+
+/*Easter egg 2: flash-icon aumentando e diminuindo lentamente o brilho*/
+@keyframes flash-pulse {
+	0% {
+	  filter: brightness(0.5);
+	}
+	50% {
+	  filter: brightness(1.4);
+	}
+	100% {
+	  filter: brightness(0.5);
+	}
+}
   
   .home-media * {
 	width: 400px;
@@ -207,6 +233,16 @@ li {
   .home-download img {
 	border-radius: 0px;
 	animation: download-hover 30s linear infinite;
+  }
+
+  .home-download img.logo-shockwave {
+	border-radius: 0px;
+	animation: shockwave-orange 6s ease-in-out infinite alternate;
+  }
+
+  .home-download img.logo-pulse {
+	border-radius: 0px;
+	animation: flash-pulse 3.5s ease-in-out infinite;
   }
   
   @media (max-width: 12px) {

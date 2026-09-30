@@ -20,7 +20,7 @@ function loadHeader() {
 <div class="headtag">
 	<a class="ret" href="index.html">
 		<div class="home-download" style="display: flex; align-items: center;">
-			<img src="images/flash.png" style="width: 100px; height: 100px; margin-right: 10px;">
+			<img id="header-logo" src="media/images/flash.png" style="width: 100px; height: 100px; margin-right: 10px;">
 			<div>
 				<h1>Jogos Flash<br> Usando emulador</h1>
 			</div>
@@ -63,6 +63,21 @@ function configureHeader() {
     if (typeof applyTheme === 'function') {
         const currentTheme = localStorage.getItem('theme') || 'light';
         applyTheme(currentTheme);
+    }
+
+    // Easter egg da logo do header
+    const headerLogo = document.getElementById('header-logo') || document.querySelector('.home-download img');
+    if (headerLogo) {
+        const rand = Math.random();
+        if (rand < 0.05) {
+            // 5% de chance: shockwave.png com gradiente apenas em tons de laranja
+            headerLogo.src = 'media/images/shockwave.png';
+            headerLogo.className = 'logo-shockwave';
+        } else if (rand < 0.075) {
+            // 2,5% de chance (0.05 até 0.075): flash-icon.png com pulso lento de brilho
+            headerLogo.src = 'media/images/flash-icon.png';
+            headerLogo.className = 'logo-pulse';
+        }
     }
 }
 
