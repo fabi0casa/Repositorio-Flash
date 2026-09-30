@@ -53,6 +53,11 @@ function configureHeader() {
         if (navInicio) {
             navInicio.outerHTML = 'Início\n\t\t\t\t';
         }
+    } else if (page === 'emulacao.html') {
+        const navEmulacao = document.getElementById('nav-emulacao');
+        if (navEmulacao) {
+            navEmulacao.outerHTML = 'Emulação\n\t\t\t\t';
+        }
     } else if (page === 'sobre.html') {
         const navSobre = document.getElementById('nav-sobre');
         if (navSobre) {

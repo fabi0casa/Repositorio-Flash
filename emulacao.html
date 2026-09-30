@@ -1,0 +1,91 @@
+<html><head>
+		<link rel="icon" href="media/images/flash.png">
+		<link rel="stylesheet" href="css/style.css">
+		<title>Repositório Flash</title>
+		<script src="js/script.js" defer></script>
+		<script src="js/header.js" defer></script>
+	</head>
+	<body>
+		<div id="header"></div>
+		<div class="notificacao">
+			<div class="mensagem">
+				Bem-vindo! Clique em qualquer imagem para acessar o jogo correspondente.<br><br>
+			</div>
+		</div>
+<!--
+		<div align="center">
+			<form id="myForm">
+				<input type="hidden" id="myInput" value="Sinta">
+				<button class="transparent-button"type="submit">
+					<img src="thumbs/Sinta.png" style="height: 150px; width: 150px;">
+					<h3><b>Sinta</b></h3>
+				</button>
+			</form>
+		</br>
+--->
+		</br>
+		<div align="center">
+			<div id="forms-container"></div>
+		</div>
+
+		<script type="module">
+			import items from './js/data.js';
+	
+			const container = document.getElementById('forms-container');
+	
+			function createForms(items) {
+				items.forEach((item, index) => {
+					// Cria um wrapper para o formulário
+					const formWrapper = document.createElement('div');
+					formWrapper.className = 'form-wrapper';
+	
+					// Cria o formulário
+					const form = document.createElement('form');
+					form.id = `form-${index}`; // ID único para cada formulário
+					form.addEventListener('submit', function(e) {
+						e.preventDefault(); // Evita o envio padrão do formulário
+						const input = form.querySelector('input[type="hidden"]');
+						const userInput = input.value;
+						// Redireciona para jogo.html com a variável na query string
+						window.location.href = 'jogo.html?data=' + encodeURIComponent(userInput);
+					});
+	
+					// Cria o botão
+					const button = document.createElement('button');
+					button.className = 'transparent-button';
+					button.type = 'submit'; // Define o botão como tipo submit
+	
+					// Cria a imagem
+					const img = document.createElement('img');
+					img.src = `media/thumbs/flash/${item}.jpeg`;
+					img.width = 150;
+					img.height = 150;
+					button.appendChild(img);
+	
+					// Cria o título
+					const h3 = document.createElement('h3');
+					h3.innerHTML = `<b>${item}</b>`;
+					button.appendChild(h3);
+	
+					// Cria o input escondido
+					const input = document.createElement('input');
+					input.type = 'hidden';
+					input.id = `input-${index}`; // ID único para cada input
+					input.value = item;
+					form.appendChild(input);
+	
+					form.appendChild(button);
+					formWrapper.appendChild(form);
+					container.appendChild(formWrapper);
+				});
+			}
+	
+			createForms(items);
+		</script>	
+
+		<div class="footer">
+			Feito por: Fábio Casagrande
+		</div>
+	
+</body>
+</html>
