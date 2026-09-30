@@ -1,0 +1,234 @@
+  header {
+    width: 1;
+    background-color: #ffffff;
+    padding: 0px 12px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  footer {
+    background-color: #1e3de9;
+    padding: 3px 12px;
+  }
+
+  .texto_de_observacao {
+    font-size: x-small;
+  }
+
+  .logo-container {
+    background-color: #ffffff;
+    padding: 0px 0px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  /* consertando responsividade para zoom maior que 110% */
+  @media (min-resolution: 106dpi) {
+    .container-fluid {
+      width:1730px !important;
+    }
+  }
+
+  /* consertando a responsividade para telas que não são 16x9*/
+  .container-fluid {  
+    display: grid;  
+    grid-template-columns: 1730px 1730px 1730px;  
+    grid-template-rows: 50px 50px;  
+  }
+
+  /* Sidebar, o menu. */
+
+  .sidebar-links {
+    width: 256px;
+    font-size: 1.1em;
+    font-weight: bold;
+    background-color: #0424dc;
+    padding-bottom: 24px;
+    box-sizing: border-box;
+  }
+
+  .sidebar-links>a {
+    display: table;
+    width: 100%;
+    color: white;
+    text-decoration: none;
+    box-sizing: border-box;
+    padding: 4px 10px;
+  }
+
+  .sidebar-links>a:hover {
+    background-color: #4763ff;
+  }
+
+  .sidebar-links>a div {
+    display: table-cell;
+    vertical-align: middle;
+  }
+
+  .sidebar-links>a div:first-child:not(:only-child) {
+    width: 200px;
+  }
+
+  .sidebar-links>a div:nth-child(2) {
+    font-size: 0.8em;
+    text-align: right;
+    transition: padding-right .2s;
+  }
+
+  .sidebar-links>a:hover div:nth-child(2) {
+    padding-right: 12px;
+  }
+
+  /* Classes comuns */
+
+  .left {
+    float: left;
+    margin-right: 16px;
+  }
+
+  .right {
+    float: right;
+    margin-left: 16px;
+  }
+
+  .quebra-elementos {
+    display: block !important;
+    margin-top: 1.3em;
+  }
+
+  /* Efeito do botão de download da Home */
+
+  @keyframes download-hover {
+    from {
+      filter: hue-rotate(360deg);
+    }
+
+    to {
+      filter: hue-rotate(0deg);
+    }
+  }
+
+  .home-media * {
+    width: 400px;
+    height: 225px;
+  }
+
+  .home-download {
+    clear: both;
+    text-align: center;
+    padding-top: 24px;
+  }
+
+  .home-download img {
+    border-radius: 12px;
+  }
+
+  .home-download img:hover {
+    animation: download-hover 30s linear infinite;
+  }
+
+
+  @media (max-width:12px) {
+    .home-media {
+      float: none;
+      text-align: center;
+      margin: 0 0 12px 0;
+    }
+
+    .home-media * {
+      width: 480px;
+      height: 270px;
+    }
+
+    .home-download img {
+      width: 480px;
+    }
+  }
+
+
+  /* Botão de download, da pagina "Doors Download" */
+  .buttonDownload {
+    display: inline-block;
+    position: relative;
+    padding: 10px 25px;
+
+    background-color: #0424dc;
+    color: white;
+
+    font-family: sans-serif;
+    text-decoration: none;
+    font-size: 0.9em;
+    text-align: center;
+    text-indent: 15px;
+  }
+
+  .buttonDownload:hover {
+    background-color: #4763ff;
+    color: white;
+  }
+
+  .buttonDownload:before,
+  .buttonDownload:after {
+    content: ' ';
+    display: block;
+    position: absolute;
+    left: 15px;
+    top: 52%;
+  }
+
+  /* formato caixa de Download */
+  .buttonDownload:before {
+    width: 10px;
+    height: 2px;
+    border-style: solid;
+    border-width: 0 2px 2px;
+  }
+
+  /* formato seta do botão de Download */
+  .buttonDownload:after {
+    width: 0;
+    height: 0;
+    margin-left: 3px;
+    margin-top: -7px;
+
+    border-style: solid;
+    border-width: 4px 4px 0 4px;
+    border-color: transparent;
+    border-top-color: inherit;
+
+    animation: downloadArrow 2s linear infinite;
+    animation-play-state: paused;
+  }
+
+  .buttonDownload:hover:before {
+    border-color: #0424dc;
+  }
+
+  .buttonDownload:hover:after {
+    border-top-color: #0424dc;
+    animation-play-state: running;
+  }
+
+  /* animação da seta do botão de download */
+  @keyframes downloadArrow {
+
+    /* 0% e 0.001% fazem a seta ficar em lugar específica por padrão quando abre a página */
+    0% {
+      margin-top: -7px;
+      opacity: 1;
+    }
+
+    0.001% {
+      margin-top: -15px;
+      opacity: 0;
+    }
+
+    50% {
+      opacity: 1;
+    }
+
+    100% {
+      margin-top: 0;
+      opacity: 0;
+    }
+  }
