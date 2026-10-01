@@ -1,5 +1,6 @@
 <html><head>
 		<link rel="icon" href="media/images/flash.png">
+		<link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/minecraftia" type="text/css"/>
 		<link rel="stylesheet" href="css/style.css">
 		<title>Repositório Flash</title>
 		<script src="js/script.js" defer></script>
@@ -24,10 +25,13 @@
 		</br>
 --->
 
-        <!--
-            adicionar opção de selecionar um jogo aleatório, e randomizar a ordem dos jogos
-		-->
-		</br>
+		<div class="game-controls">
+			<button id="btn-sort-az" class="minecraft-btn" type="button" title="Ordenar de A a Z">A-Z</button>
+			<button id="btn-sort-za" class="minecraft-btn" type="button" title="Ordenar de Z a A">Z-A</button>
+			<button id="btn-shuffle" class="minecraft-btn" type="button" title="Reembaralhar jogos">Reembaralhar</button>
+			<button id="btn-random-game" class="minecraft-btn" type="button" title="Jogar um jogo aleatório">Jogo Aleatório</button>
+		</div>
+
 		<div align="center">
 			<div id="forms-container"></div>
 		</div>
@@ -37,6 +41,24 @@
 			import shockwave_games from './js/data-shockwave.js';
 	
 			const container = document.getElementById('forms-container');
+
+			// Unifica os jogos misturando Flash e Shockwave com seus respectivos tipos
+			const allGames = [
+				...flash_games.map(name => ({ name, type: 'flash' })),
+				...shockwave_games.map(name => ({ name, type: 'shockwave' }))
+			];
+
+			let currentGames = [];
+
+			// Algoritmo Fisher-Yates para embaralhar uniformemente
+			function shuffle(array) {
+				const arr = [...array];
+				for (let i = arr.length - 1; i > 0; i--) {
+					const j = Math.floor(Math.random() * (i + 1));
+					[arr[i], arr[j]] = [arr[j], arr[i]];
+				}
+				return arr;
+			}
 	
 			function createGameForm(item, type, index) {
 				// Cria um wrapper para o formulário
@@ -107,16 +129,40 @@
 				container.appendChild(formWrapper);
 			}
 
-			function createForms() {
-				flash_games.forEach((item, index) => {
-					createGameForm(item, 'flash', index);
-				});
-				shockwave_games.forEach((item, index) => {
-					createGameForm(item, 'shockwave', index);
+			function renderGames(games) {
+				container.innerHTML = '';
+				games.forEach((game, index) => {
+					createGameForm(game.name, game.type, index);
 				});
 			}
 
-			createForms();
+			// Botão 1: Ordenação alfabética (A-Z)
+			document.getElementById('btn-sort-az').addEventListener('click', () => {
+				currentGames.sort((a, b) => a.name.localeCompare(b.name, 'pt-BR', { sensitivity: 'base' }));
+				renderGames(currentGames);
+			});
+
+			// Botão 2: Ordenação alfabética reversa (Z-A)
+			document.getElementById('btn-sort-za').addEventListener('click', () => {
+				currentGames.sort((a, b) => b.name.localeCompare(a.name, 'pt-BR', { sensitivity: 'base' }));
+				renderGames(currentGames);
+			});
+
+			// Botão 3: Reembaralha todos os jogos novamente
+			document.getElementById('btn-shuffle').addEventListener('click', () => {
+				currentGames = shuffle(currentGames);
+				renderGames(currentGames);
+			});
+
+			// Botão 4: Abre diretamente um jogo aleatório
+			document.getElementById('btn-random-game').addEventListener('click', () => {
+				const randomGame = allGames[Math.floor(Math.random() * allGames.length)];
+				window.location.href = `jogo.html?${randomGame.type}=` + encodeURIComponent(randomGame.name);
+			});
+
+			// Ao carregar a página: exibe todos os jogos em ordem totalmente aleatória misturando Flash e Shockwave
+			currentGames = shuffle(allGames);
+			renderGames(currentGames);
 		</script>	
 
 		<div class="footer">
