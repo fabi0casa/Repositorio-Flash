@@ -82,6 +82,14 @@
 				img.height = 150;
 				button.appendChild(img);
 
+				// Cria o badge indicativo do tipo de jogo
+				const badge = document.createElement('img');
+				badge.className = 'game-badge';
+				badge.src = type === 'flash' ? 'media/images/flash-icon.png' : 'media/images/shockwave.png';
+				badge.alt = type === 'flash' ? 'Flash' : 'Shockwave';
+				badge.title = type === 'flash' ? 'Jogo Flash' : 'Jogo Shockwave';
+				button.appendChild(badge);
+
 				// Cria o título
 				const h3 = document.createElement('h3');
 				h3.innerHTML = `<b>${item}</b>`;

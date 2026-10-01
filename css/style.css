@@ -287,6 +287,7 @@ li {
     align-items: center;
     justify-content: flex-start;
     overflow: hidden;
+    position: relative;
 }
 
 .transparent-button:hover {
@@ -316,6 +317,7 @@ body.light .transparent-button {
     align-items: center;
     justify-content: flex-start;
     overflow: hidden;
+    position: relative;
 }
 
 body.light .transparent-button:hover {
@@ -329,6 +331,19 @@ body.light .transparent-button:hover {
     flex-shrink: 0;
     display: block;
     margin: 0 auto;
+}
+
+.transparent-button img.game-badge {
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    width: 22px;
+    height: 22px;
+    display: block;
+    object-fit: contain;
+    pointer-events: none;
+    z-index: 2;
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.5));
 }
 
 .transparent-button h3 {
