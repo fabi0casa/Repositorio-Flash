@@ -1,0 +1,166 @@
+@font-face {
+    font-family: 'TetrisPixelFont';
+    src: url('../media/tetris/fonts/Daydream.ttf') format('truetype');
+}
+
+#tetris-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.88);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    z-index: 999999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    animation: tetrisFadeIn 0.3s ease-out;
+}
+
+@keyframes tetrisFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.96);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.tetris-popup-window {
+    background: linear-gradient(180deg, #0c192c 0%, #18202e 50%, #2c3c52 100%);
+    border: 3px solid #039a00;
+    padding: 16px 28px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 95vw;
+    max-height: 96vh;
+    overflow-y: auto;
+    box-sizing: border-box;
+    font-family: 'TetrisPixelFont', 'Press Start 2P', monospace, sans-serif;
+    color: #ffffff;
+}
+
+.tetris-popup-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 8px;
+}
+
+.tetris-logo-wrap {
+    text-align: center;
+}
+
+.tetris-logo {
+    height: 52px;
+    max-width: 220px;
+    object-fit: contain;
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.5));
+}
+
+.tetris-piece-top {
+    height: 55px;
+    width: auto;
+    object-fit: contain;
+}
+
+.tetris-popup-middle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    width: 100%;
+}
+
+.tetris-piece-side {
+    height: 110px;
+    width: auto;
+    object-fit: contain;
+}
+
+.tetris-game-frame {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #039a00;
+    border: 8px inset #03cc00;
+    padding: 14px 18px;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.4), 0 0 16px rgba(0, 240, 255, 0.3);
+}
+
+#tetris-canvas {
+    display: block;
+    background-color: #ffffff;
+    border: 2px solid #000000;
+}
+
+.tetris-pontuacao {
+    font-family: 'TetrisPixelFont', monospace;
+    font-size: 13px;
+    color: #000000;
+    margin-top: 10px;
+    font-weight: bold;
+    text-align: center;
+    letter-spacing: 1px;
+}
+
+#tetris-score {
+    font-family: 'TetrisPixelFont', monospace;
+    display: inline-block;
+}
+
+.tetris-popup-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.tetris-piece-bottom {
+    height: 45px;
+    width: auto;
+    object-fit: contain;
+    transform: scaleY(-1);
+}
+
+.tetris-flip-h {
+    transform: scaleX(-1);
+}
+
+.tetris-piece-bottom.tetris-flip-h {
+    transform: scale(-1, -1);
+}
+
+.tetris-instructions {
+    font-family: 'TetrisPixelFont', monospace;
+    font-size: 10px;
+    color: #9ac2e8;
+    text-align: center;
+    letter-spacing: 0.5px;
+}
+
+@media (max-height: 680px) {
+    .tetris-popup-window {
+        padding: 8px 16px;
+    }
+    .tetris-logo {
+        height: 38px;
+    }
+    .tetris-piece-top {
+        height: 40px;
+    }
+    .tetris-piece-side {
+        height: 80px;
+    }
+    .tetris-game-frame {
+        padding: 8px 12px;
+    }
+}
