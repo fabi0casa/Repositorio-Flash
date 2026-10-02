@@ -52,16 +52,32 @@
             if (flashGame) {
                 printToScreen(flashGame);
 
+                const gameFolder = `media/jogos/flash/${flashGame}/`;
+                const mainSwf = `${gameFolder}${flashGame}.swf`;
+
                 window.RufflePlayer = window.RufflePlayer || {};
-                window.addEventListener("load", (event) => {
+                window.RufflePlayer.config = window.RufflePlayer.config || {};
+                window.RufflePlayer.config.base = gameFolder;
+
+                function loadFlashGame() {
                     const ruffle = window.RufflePlayer.newest();
                     const player = ruffle.createPlayer();
                     const container = document.getElementById("container");
                     container.appendChild(player);
                     player.style.width = "800px";
                     player.style.height = "600px";
-                    player.load(`media/jogos/flash/${flashGame}/${flashGame}.swf`);
-                });
+                    player.load({
+                        url: mainSwf,
+                        base: gameFolder,
+                        allowScriptAccess: true
+                    });
+                }
+
+                if (document.readyState === "complete") {
+                    loadFlashGame();
+                } else {
+                    window.addEventListener("load", loadFlashGame);
+                }
             } else if (shockwaveGame) {
                 printToScreen(shockwaveGame);
 

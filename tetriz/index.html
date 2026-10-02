@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Tetris</title>
+    <style>
+        #score{
+            display: inline-block;
+        }
+        div{
+            font-size: 25px;
+            font-weight: bold;
+            font-family: monospace;
+            text-align: center;
+        }
+        canvas{
+            display: block;
+            margin:0 auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="img">
+            <img src="img/tetris_peca.png" alt="peca" id="peca">
+        </div>
+        <div class="Title">
+            <img src="img/tetris_logo2.png" alt="">
+        </div>
+        <div class="img">
+            <img src="img/tetris_peca.png" alt="peca" id="peca2">
+        </div>
+    </div>
+
+    <div class="middle">
+        <div class="img">
+            <img src="img/tetris_peca3.png" alt="peca" id="peca">
+        </div>
+        <div class="container jogo">
+            <canvas id="tetris" width="200" height="400"></canvas>
+            <div class="pontuacao">
+                <br>
+                Pontuacao : <div id="score">0</div>
+            </div>
+            <script src="tetrominoes.js"></script>
+            <script src="tetris.js"></script>
+        </div>
+        <div class="img">
+            <img src="img/tetris_peca3.png" alt="peca" id="peca2">
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="img">
+            <img src="img/tetris_peca.png" alt="peca" id="peca">
+        </div>
+        <div class="img">
+            <img src="img/tetris_peca.png" alt="peca" id="peca2">
+        </div>
+    </div>
+</body>
+</html>

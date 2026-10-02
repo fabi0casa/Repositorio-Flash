@@ -1,0 +1,73 @@
+
+@font-face {
+    font-family: 'PixelFont';
+    src: url('fonts/Daydream.ttf') format('truetype');
+    
+}
+
+*{
+    box-sizing: border-box;
+}
+
+body{
+    padding: 0;
+    margin: 0;
+    background: linear-gradient(#0c192c, #18202e, #2c3c52);
+    height: 100vh;
+    overflow: hidden;
+} 
+
+.header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: white;
+    height: 20%;
+}
+
+.footer{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transform: scaleY(-1);
+    height: 10%;
+}
+
+.middle{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 65%;
+}
+
+#peca{
+    height: 150px;
+    width: 200px;
+}
+
+#peca2{
+    height: 150px;
+    width: 200px;
+    transform: scaleX(-1);
+}
+
+.jogo{
+    margin: auto;
+    margin-top: 20px;
+    width: 500px;
+    border: 10px inset aqua;
+    border-radius: 10px;
+    padding: 20px;
+    background-color: #8BAC0F;
+}
+
+.pontuacao{
+    font-family: 'PixelFont';
+    color: black;
+}
+
+#score{
+    font-family: 'PixelFont';
+}
+
+
